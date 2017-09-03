@@ -20,7 +20,6 @@ export function parseTextures(config) {
   var textures = [], tx = null;
   for (i = 0; i < lines.length; ++i) {
     var line = lines[i];
-    console.log(line);
     if (COMMENT_RE.exec(line)) {
       continue;
     }

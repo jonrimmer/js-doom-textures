@@ -3,6 +3,9 @@
  * ImageCache implements a class that will load images on demand from a
  * specified URL, creating them as `<img>` elements in a hidden `<div>` so that they
  * can be composited into a full texture.
+ * 
+ * In browsers that support service worker, this cache probably adds very little. But
+ * in those that don't, it helps cut down a lot on multiple network requests.
  */
 export class ImageCache {
   constructor(rootPath, extension) {
@@ -29,7 +32,6 @@ export class ImageCache {
     return this.images[name] || (this.images[name] = new Promise(resolve => {
       let img = new Image();
       img.onload = () => {
-        console.debug('Image loaded: ' + name);
         resolve(img);
       };
       let filename = this.rootPath + '/' + name + this.extension;

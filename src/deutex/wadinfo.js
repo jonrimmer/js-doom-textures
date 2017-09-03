@@ -4,7 +4,16 @@ const EMPTY_RE = /^\s*$/;
 const COMMENT_RE = /^\s*#.*$/;
 const SECTION_RE = /^\s*\[(\w+)\]\s*$/;
 
+/**
+ * This class represents a deutex-format `wadinfo.txt` file.
+ */
 export class WadInfo {
+  /**
+   * Parses a `wadinfo.txt` file, and extracts its contents. Currently,
+   * only flats info is extracted.
+   * 
+   * @param {string} raw 
+   */
   constructor(raw) {
     this.flats = [];
 
@@ -36,7 +45,7 @@ export class WadInfo {
   }
 
   toString() {
-    return `WadInfo: \n  ${flats.length} Flats`;
+    return `WadInfo: ${this.flats.length} Flats`;
   }
 }
 
@@ -51,7 +60,7 @@ export function loadWadInfo(url) {
   return fetch(url).then(response => {
     console.log(`Response loading ${response.url}: ${response.status}`);
     return response.text().then(content => new WadInfo(content)).then(wadInfo => {
-      console.log(wadInfo);
+      console.log(wadInfo.toString());
       return wadInfo;
     })
   }).catch(error => {

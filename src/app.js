@@ -32,6 +32,19 @@ function renderAllTextures(element, game) {
   });
 }
 
+/**
+ * Populates the given HTML container with <cavas> elemtns for all flats
+ * for the given game. It is expected that there exist the following:
+ * 
+ *   <game>/wadinfo.txt
+ *     - A valid deutex wadinfo.txt, containing a list of flats.
+ * 
+ *   <game>/flats/<flat name>.png
+ *     - Indvidual PNG flat files.
+ * 
+ * @param {HTMLElement} element - The container element.
+ * @param {*} game - The game to load the flats for.
+ */
 function renderAllFlats(element, game) {
   let flatsCache = new ImageCache(game + '/flats', '.png');
 

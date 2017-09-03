@@ -40,6 +40,22 @@
   </div>
   <div id="texture-list"></div>
   <div id="flats-list"></div>
+  <script>
+    if ((!location.port || location.port == "80") && location.protocol != 'https:') {
+      location.protocol = 'https:';
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('service-worker.js', { scope: ' ' })
+        .then(() => {
+          console.log('Service worker registered.');
+        })
+        .catch(err => {
+          console.log('Error registering service worker:' + err);
+        });
+    }
+  </script>
   <script src="out/bundle.js"></script>
 </body>
 </html>
