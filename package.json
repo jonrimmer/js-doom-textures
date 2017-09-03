@@ -1,0 +1,25 @@
+{
+  "name": "js-doom-textures",
+  "version": "1.0.0",
+  "description": "This is some JavaScript code for rendering Doom textures based on deutex-format texture definition files.",
+  "main": "texture.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./config/webpack.config.js",
+    "watch": "webpack --config ./config/webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonrimmer/js-doom-textures.git"
+  },
+  "keywords": [],
+  "author": "Jon Rimmer <jon.rimmer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonrimmer/js-doom-textures/issues"
+  },
+  "homepage": "https://github.com/jonrimmer/js-doom-textures#readme",
+  "devDependencies": {
+    "webpack": "3.5.5"
+  }
+}
