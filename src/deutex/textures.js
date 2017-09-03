@@ -1,5 +1,5 @@
-import { Texture } from './texture';
-import { Patch } from './patch';
+import { Texture } from '../texture';
+import { Patch } from '../patch';
 
 // Regexps for parsing contents of deutex-format texture definition files.
 const EMPTY_RE = /^\s*$/;
@@ -63,7 +63,7 @@ export function loadTexturesFile(url) {
       return textures;
     })
   }).catch(error => {
-    console.debug(`Error loading ${error.url}: ${error.toString()}`);
+    console.error(`Error loading ${error.url}: ${error.toString()}`);
   });
 }
 

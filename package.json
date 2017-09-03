@@ -4,7 +4,7 @@
   "description": "This is some JavaScript code for rendering Doom textures based on deutex-format texture definition files.",
   "main": "texture.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --config ./config/webpack.config.js",
     "watch": "webpack --config ./config/webpack.config.js --watch"
   },
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/jonrimmer/js-doom-textures#readme",
   "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-es2015": "6.24.1",
+    "jest": "20.0.4",
     "webpack": "3.5.5"
   }
 }

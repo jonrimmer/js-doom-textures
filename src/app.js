@@ -1,5 +1,6 @@
 import { ImageCache } from './image-cache';
-import { loadAllTextures } from './deutex-utils';
+import { loadAllTextures } from './deutex/textures';
+import { loadWadInfo } from './deutex/wadinfo';
 
 /**
  * Populates the given HTML container element with <canvas> elements
@@ -31,6 +32,17 @@ function renderAllTextures(element, game) {
   });
 }
 
+function renderAllFlats(element, game) {
+  let flatsCache = new ImageCache(game + '/flats', '.png');
+
+  loadWadInfo(game + '/wadinfo.txt').then(wadInfo => {
+    wadInfo.flats.forEach(flat => {
+      let canvas = flat.draw(flatsCache);
+      element.appendChild(canvas);
+    })
+  })
+}
+
 /**
  * Looks for a URL parameter in the loaded page specifying which game
  * to render textures for; if none exists then 'freedoom1' is the default.
@@ -43,8 +55,17 @@ function getGame() {
 
 window.onload = function() {
   console.log('Page loaded');
-  let el = document.getElementById('texture-list');
+
   let game = getGame();
   console.log('Rendering for ' + game);
-  renderAllTextures(el, game);
+
+  renderAllTextures(
+    document.getElementById('texture-list'),
+    game
+  );
+
+  renderAllFlats(
+    document.getElementById('flats-list'),
+    game
+  );
 }
